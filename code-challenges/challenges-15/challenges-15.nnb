@@ -59,7 +59,7 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "'use strict';\n\nconst fs = require('fs');\n\nprocess.stdin.resume();\nprocess.stdin.setEncoding('utf-8');\n\nlet inputString = '';\nlet currentLine = 0;\n\nprocess.stdin.on('data', function(inputStdin) {\n    inputString += inputStdin;\n});\n\nprocess.stdin.on('end', function() {\n    inputString = inputString.split('\\n');\n\n    main();\n});\n\nfunction readLine() {\n    return inputString[currentLine++];\n}\n\n/*\n * Complete the 'squares' function below.\n *\n * The function is expected to return an INTEGER.\n * The function accepts following parameters:\n *  1. INTEGER a\n *  2. INTEGER b\n */\n\nfunction squares(a, b) {\n    let count=0;\nfor(let i =a;i<=b;i++)\n{\nif( Math.sqrt(i) % 1 === 0)\ncount++;    \n}\nreturn count;\n}\n\nfunction main() {\n    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);\n\n    const q = parseInt(readLine().trim(), 10);\n\n    for (let qItr = 0; qItr < q; qItr++) {\n        const firstMultipleInput = readLine().replace(/\\s+$/g, '').split(' ');\n\n        const a = parseInt(firstMultipleInput[0], 10);\n\n        const b = parseInt(firstMultipleInput[1], 10);\n\n        const result = squares(a, b);\n\n        ws.write(result + '\\n');\n    }\n\n    ws.end();\n}\n"
             ],
             "outputs": []
         }
